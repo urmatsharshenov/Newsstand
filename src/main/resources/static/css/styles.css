@@ -1,0 +1,215 @@
+:root {
+    --newspaper-width: 125px;
+    --newspaper-height: 82px;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    overflow-x: hidden;
+    overflow-y: auto;
+    justify-content: center;
+    background-color: skyblue;
+    padding-top: 25px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.newspaper {
+    background-color: #fafafa;
+    width: var(--newspaper-width);
+    min-width: var(--newspaper-width);
+    height: var(--newspaper-height);
+    padding: 5px;
+    box-shadow: 0 0px 25px 1px #ccc;
+    transition: 0.5s ease;
+    user-select: none;
+    font-family: "Lusitana", serif;
+    transform-origin: center center;
+}
+
+.newspaper:hover {
+    cursor: pointer;
+}
+
+.newspaper--zoom {
+    position: absolute;
+    left: calc(50% - var(--newspaper-width) / 2);
+    top: calc(50% - var(--newspaper-height) / 2);
+    transform: rotate(360deg) scale(3);
+    box-shadow: none;
+    height: auto;
+}
+
+.news-stand {
+    width: 90%;
+    max-width: 1024px;
+    margin-left: calc(15px / 2)
+}
+
+.overhang {
+    width: 100%;
+    background-color: #c31f33;
+    height: 25px;
+    position: relative;
+}
+
+.marquee h1 {
+    margin: 15px;
+    text-align: center;
+    color: #f1f1f1;
+    font-family: "Lusitana", serif;
+    letter-spacing: 3px;
+    font-weight: normal;
+    text-shadow: 5px 5px 5px #000;
+    font-size: 46px;
+}
+
+.newspapers {
+    display: flex;
+}
+
+.newspaper:not(:last-child) {
+    margin-right: 15px;
+}
+
+.structure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #102e35;
+    height: 500px;
+}
+
+.roof {
+    width: 100%;
+    box-shadow: 0px -1px 1px 0 #ccc;
+    height: 50px;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    background: linear-gradient(
+            180deg,
+            rgba(241, 255, 249, 1) 0%,
+            rgba(241, 255, 249, 1) 35%,
+            rgba(40, 78, 90, 1) 100%
+    );
+}
+
+.newspaper h1 {
+    margin: 0 0 5px 0;
+    font-size: 12px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.newspaper__columns {
+    display: flex;
+}
+
+.newspaper__column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 2px;
+    flex: 1;
+}
+
+.newspaper__line {
+    height: 3px;
+    width: 100%;
+    background-color: #ccc;
+    margin-bottom: 3px;
+}
+
+.newspaper__line--picture {
+    height: 15px;
+}
+
+.shelf {
+    width: 90%;
+    height: 110px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e6e6e6;
+    box-shadow: inset 10px -15px 0px 5px #f3f3f3;
+}
+
+.overhang::before {
+    content: "";
+    position: absolute;
+    left: -34px;
+    top: 10px;
+    border-top: 0px solid transparent;
+    border-bottom: 15px solid transparent;
+
+    border-right: 35px solid #c31f33;
+    width: 0;
+    height: 0;
+}
+
+.overhang::after {
+    content: "";
+    position: absolute;
+    right: -34px;
+    top: 10px;
+    border-top: 0px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-left: 35px solid #c31f33;
+    width: 0;
+    height: 0;
+}
+
+.overhang__top {
+    height: 10px;
+    background-color: #530500;
+}
+
+.overhang__top::before {
+    content: "";
+    position: absolute;
+    left: -35px;
+    top: 0;
+    width: 36px;
+    height: 10px;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    background-color: #530500;
+}
+
+.overhang__top::after {
+    content: "";
+    position: absolute;
+    right: -35px;
+    top: 0;
+    width: 36px;
+    height: 10px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    background-color: #530500;
+}
+
+.shelf:not(:last-child) {
+    margin-bottom: 30px;
+}
+
+@media screen and (max-width: 420px) {
+    .shelf {
+        justify-content: flex-start;
+        padding-left: 25px;
+    }
+
+    .marquee h1 {
+        font-size: 36px;
+    }
+
+    .newspaper {
+        margin-right: 15px !important;
+    }
+}

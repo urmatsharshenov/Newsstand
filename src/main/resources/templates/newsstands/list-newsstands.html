@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Thymeleaf with Spring Boot</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+<body>
+<div class="news-stand">
+    <div class="roof">
+    </div>
+    <div class="overhang">
+        <div class="overhang__top"></div>
+    </div>
+    <div class="structure">
+        <div class="marquee">
+            <h1 th:text="${productType}"/>
+        </div>
+        <div class="shelf" th:each="i: ${#numbers.sequence(0, newstands.size()/4)}">
+            <div class="newspapers">
+                <div class="newspaper"
+                     th:each="newstand:  ${newstands.subList(i * 4, (i * 4 + 4 < newstands.size() ? i * 4 + 4: newstands.size()))}">
+                    <a th:href="@{/products(kioskId=${newstand.id})}">
+                        <h1 th:text="${newstand.name}"/>
+                        <div class="newspaper__columns">
+                            <div class="newspaper__column">
+                                <div class="newspaper__line">
+                                </div>
+                                <div class="newspaper__line">
+                                </div>
+                                <div class="newspaper__line">
+                                </div>
+                                <div class="newspaper__line">
+                                </div>
+                                <div class="newspaper__line">
+                                </div>
+                                <div class="newspaper__line">
+                                </div>
+                                <div class="newspaper__line">
+                                </div>
+                                <div class="newspaper__line">
+                                </div>
+                                <div class="newspaper__line">
+                                </div>
+                            </div>
+                            <div class="newspaper__column">
+                                <div class="newspaper__line newspaper__line--picture">
+                                </div>
+                                <div class="newspaper__line">
+                                </div>
+                                <div class="newspaper__line">
+                                </div>
+                                <div class="newspaper__line">
+                                </div>
+                                <div class="newspaper__line">
+                                </div>
+                                <div class="newspaper__line">
+                                </div>
+                                <div class="newspaper__line">
+                                </div>
+                            </div>
+                            <div class="newspaper__column">
+                                <div class="newspaper__line">
+                                </div>
+                                <div class="newspaper__line">
+                                </div>
+                                <div class="newspaper__line">
+                                </div>
+                                <div class="newspaper__line">
+                                </div>
+                                <div class="newspaper__line">
+                                </div>
+                                <div class="newspaper__line">
+                                </div>
+                                <div class="newspaper__line">
+                                </div>
+                                <div class="newspaper__line">
+                                </div>
+                                <div class="newspaper__line">
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
